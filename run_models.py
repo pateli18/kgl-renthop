@@ -7,11 +7,19 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import log_loss
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+from sklearn.ensemble import RandomForestClassifier
 import datetime
 import time
 
 TEST_SIZE = .3
 RANDOM_SEED = 42
+
+LOG_PARAMETERS = {'solver' : ['newton-cg', 'lbfgs'], 'multi_class' : ['ovr', 'multinomial'], 
+'class_weight' : ['balanced', None], 'C' : [10**c for c in range(-3, 4)]}
+
+RF_PARAMETERS = {'n_estimators': [10, 50, 100, 250, 500], 'criterion': ['gini', 'entropy'],
+'max_features' : ['auto', 'sqrt', 'log2'], 'min_samples_leaf' : [1, 10, 20, 50, 100],
+'random_state': [42], 'class_weight' : [None, 'balanced', 'balanced_subsample']}
 
 def split_data(dataset):
 	X = dataset.drop('interest_level', axis = 1)
@@ -29,10 +37,10 @@ def split_data(dataset):
 		print("{0}: {1:.4f} | {2:.4f}".format(key, y_train_split[key], y_test_split[key]))
 	return X_train, X_test, y_train, y_test
 
-def parse_grid_scores(grid_scores, predictors):
+def parse_grid_scores(grid_scores, model_name, predictors):
 	values = []
 	for model in grid_scores:
-		values.append({'timestamp': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M'), 'model' : 'log',
+		values.append({'timestamp': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M'), 'model' : model_name,
 			'parameters' : str(model[0]), 'score' : model[1], 'score_std' : np.std(model[2]), 'cv_folds' : len(model[2]),
 			'predictors' : predictors})
 	return pd.DataFrame(values)
@@ -53,6 +61,12 @@ def cross_validate_model(model, parameters, X_train, y_train):
 	model_cv.fit(X_train, y_train)
 	return model_cv
 
+def evaluate_model(model_name, model, parameters, X_train, X_test, y_train, y_test):
+	model_cv = cross_validate_model(model, parameters, X_train, y_train)
+	model_performance = parse_grid_scores(model_cv.grid_scores_, model_name, list(X_train.columns))
+	model_score = chosen_model_score(model_cv.best_estimator_, model_name, str(model_cv.best_params_), X_test, y_test)
+	return model_performance, model_score
+
 def run_models(dataset, model_performance_dataset, chosen_models_dataset, models = ['log', 'rf', 'xbg']):
 	print("Loading data...")	
 	df_full = pd.read_csv(dataset)
@@ -69,17 +83,16 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 	print("Splitting data...")
 	X_train, X_test, y_train, y_test = split_data(df_full)
 	if 'log' in models:
-		print("Cross-Validating Log Model")
+		print("Cross-Validating Log Model...")
 		log_model = LogisticRegression()
-		log_parameters = {'solver' : ['newton-cg', 'lbfgs'], 'multi_class' : ['ovr', 'multinomial'], 
-		'class_weight' : ['balanced', None], 'C' : [10**c for c in range(-3, 4)]}
-		log_model_cv = cross_validate_model(log_model, log_parameters, X_train, y_train)
-		df_model_performance = df_model_performance.append(parse_grid_scores(log_model_cv.grid_scores_, 
-			list(X_train.columns)), ignore_index = True)
-		df_chosen_models = df_chosen_models.append(chosen_model_score(log_model_cv.best_estimator_, 'log', 
-			str(log_model_cv.best_params_), X_test, y_test), ignore_index = True)
-		df_model_performance.to_csv(model_performance_dataset, index = False)
-		df_chosen_models.to_csv(chosen_models_dataset, index = False)
+		log_model_performance, log_model_score = evaluate_model('log', log_model, LOG_PARAMETERS, X_train, X_test, y_train, y_test)
+		df_model_performance.append(log_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
+		df_chosen_models.append(log_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		print("Log Model Complete!")
+	if 'rf' in models:
+		print("Cross-Validating Random Forest Model...")
+		rf_model = RandomForestClassifier()
+		rf_model_performance, rf_model_score = evaluate_model('rf', rf_model, RF_PARAMETERS, X_train, X_test, y_train, y_test)
+		df_model_performance.append(rf_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
+		df_chosen_models.append(rf_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
 	print("Complete")
-
-run_models('datasets/train_clean_v1.csv', 'model_performance.csv', 'chosen_models.csv', models = ['log'])
