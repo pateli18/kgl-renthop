@@ -14,7 +14,7 @@ def clean_data(filename, new_filename):
 	df_deduped = df_deduped[(df_deduped['price'] > 50) & (df_deduped['price'] < 1000000)]
 	df_deduped['description'] = df_deduped['description'].apply(lambda description: [description])
 	print("New Shape: {0} by {1}".format(df_deduped.shape[0], df_deduped.shape[0]))
-	df_deduped.to_csv(new_filename)
+	df_deduped.to_csv(new_filename, index = False)
 	print("Complete")
 
 filename = sys.argv[1]
