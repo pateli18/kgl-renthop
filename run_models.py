@@ -1,6 +1,7 @@
 
 import pandas as pd
 import numpy as np
+import sys
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.grid_search import GridSearchCV
@@ -10,16 +11,19 @@ from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 import datetime
 import time
+from xgboost import XGBClassifier
 
 TEST_SIZE = .3
 RANDOM_SEED = 42
 
-LOG_PARAMETERS = {'solver' : ['newton-cg', 'lbfgs'], 'multi_class' : ['ovr', 'multinomial'], 
+LOG_PARAMETERS = {'solver' : ['newton-cg'], 'multi_class' : ['multinomial'], 
 'class_weight' : ['balanced', None], 'C' : [10**c for c in range(-3, 4)]}
 
-RF_PARAMETERS = {'n_estimators': [10, 50, 100, 250, 500], 'criterion': ['gini', 'entropy'],
-'max_features' : ['auto', 'sqrt', 'log2'], 'min_samples_leaf' : [1, 10, 20, 50, 100],
+RF_PARAMETERS = {'n_estimators': [500],'max_features' : ['auto', 'sqrt', 'log2'], 'min_samples_leaf' : [1, 10, 100],
 'random_state': [42], 'class_weight' : [None, 'balanced', 'balanced_subsample']}
+
+XGB_PARAMETERS = {'learning_rate': [.01, .05, .1, .2, .5], 'max_depth' : [5, 10], 'n_estimators': [500],
+'objective' : ['multi:softprob']}
 
 def split_data(dataset):
 	X = dataset.drop('interest_level', axis = 1)
@@ -54,6 +58,8 @@ def chosen_model_score(model, model_name, model_parameters, X_test, y_test):
 	values = [{'timestamp': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M'), 'model' : model_name,
 			'parameters' : model_parameters, 'log_loss' : log_loss_score, 'accuracy' : accuracy, 'confusion_matrix' : cm,
 			'predictors' : list(X_test.columns)}]
+	print("Log-Loss: {0:.4f}".format(log_loss_score))
+	print("Accuracy: {0:.4f}".format(accuracy))
 	return pd.DataFrame(values)
 
 def cross_validate_model(model, parameters, X_train, y_train):
@@ -67,7 +73,7 @@ def evaluate_model(model_name, model, parameters, X_train, X_test, y_train, y_te
 	model_score = chosen_model_score(model_cv.best_estimator_, model_name, str(model_cv.best_params_), X_test, y_test)
 	return model_performance, model_score
 
-def run_models(dataset, model_performance_dataset, chosen_models_dataset, models = ['log', 'rf', 'xbg']):
+def run_models(dataset, model_performance_dataset, chosen_models_dataset, models = ['log', 'rf', 'xgb']):
 	print("Loading data...")	
 	df_full = pd.read_csv(dataset)
 	try:
@@ -84,15 +90,35 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 	X_train, X_test, y_train, y_test = split_data(df_full)
 	if 'log' in models:
 		print("Cross-Validating Log Model...")
+		log_time_start = time.time()
 		log_model = LogisticRegression()
 		log_model_performance, log_model_score = evaluate_model('log', log_model, LOG_PARAMETERS, X_train, X_test, y_train, y_test)
 		df_model_performance.append(log_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
 		df_chosen_models.append(log_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
-		print("Log Model Complete!")
+		log_time_end = time.time()
+		print("Log Model Complete! Time Elapsed - {0} Seconds".format(log_time_end - log_time_start))
 	if 'rf' in models:
 		print("Cross-Validating Random Forest Model...")
+		rf_time_start = time.time()
 		rf_model = RandomForestClassifier()
 		rf_model_performance, rf_model_score = evaluate_model('rf', rf_model, RF_PARAMETERS, X_train, X_test, y_train, y_test)
 		df_model_performance.append(rf_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
 		df_chosen_models.append(rf_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		rf_time_end = time.time()
+		print("RF Model Complete! Time Elapsed - {0} Seconds".format(rf_time_end - rf_time_start))
+	if 'xgb' in models:
+		print("Cross-Validating XGBoost Model...")
+		xgb_time_start = time.time()
+		xgb_model = XGBClassifier()
+		xgb_model_performance, xgb_model_score = evaluate_model('xgb', xgb_model, XGB_PARAMETERS, X_train, X_test, y_train, y_test)
+		df_model_performance.append(xgb_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
+		df_chosen_models.append(xgb_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		xgb_time_end = time.time()
+		print("XGB Model Complete! Time Elapsed - {0} Seconds".format(xgb_time_end - xgb_time_start))
 	print("Complete")
+
+dataset = sys.argv[1]
+model_performance_dataset = sys.argv[2]
+chosen_models_dataset = sys.argv[3]
+models = ['log', 'rf', 'xgb'] if sys.argv[4] is None else sys.argv[4] 
+run_models(dataset, model_performance_dataset, chosen_models_dataset, models)

@@ -2,3 +2,12 @@ accuracy,confusion_matrix,log_loss,model,parameters,predictors,timestamp
 0.697628167354,"[[9405   98    1]
  [2943   60    1]
  [1010   52    6]]",0.723702616474,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","Index([u'bathrooms', u'bedrooms', u'price'], dtype='object')",2017-03-15 16:28
+0.707424867413,"[[9452   30   22]
+ [2931   39   34]
+ [ 915   40  113]]",0.697199598904,rf,"{'min_samples_leaf': 20, 'n_estimators': 250, 'random_state': 42, 'criterion': 'gini', 'max_features': 'auto', 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",2017-03-15 18:48
+0.707793164408,"[[9367  104   33]
+ [2853  109   42]
+ [ 873   62  133]]",0.699523280856,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",2017-03-15 21:44
+0.70970830878,"[[9387   67   50]
+ [2855   91   58]
+ [ 849   62  157]]",0.693430676414,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'price']",2017-03-15 22:23
