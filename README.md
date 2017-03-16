@@ -1,6 +1,4 @@
-# Kaggle Renthop Competition Data Collection and Cleaning, Model Evaluation
-
-By [Ihsaan Patel](https://github.com/pateli18)
+# Kaggle Renthop Competition Data Collection and Transformantion, Model Evaluation
 
 ## Description
 
@@ -51,9 +49,9 @@ python add_predictor_lengths.py <cleaned_data_filepath.csv> <transformed_data_fi
 ```
 ## Model Evaluation
 
-**Models List Object** can be a combination of the following values: `'log'`, `'rf'`, `'xgb'`
+`<models_list_object>` can be a combination of the following values: `'log'`, `'rf'`, `'xgb'`
 
-Make sure the path to both model_performance.csv and chosen_models.csv is correct and that the updated versions of these are pushed to github
+Make sure the path to both *model_performance.csv* and *chosen_models.csv* is correct and that the updated versions of these are pushed to github
 
 ```console
 python run_models.py <training_dataset.csv> model_performance.csv chosen_models.csv <models_list_object>
