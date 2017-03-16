@@ -14,3 +14,12 @@ accuracy,confusion_matrix,log_loss,model,parameters,predictors,timestamp
 0.714348850913,"[[9182  271   51]
  [2585  342   77]
  [ 697  197  174]]",0.646302639173,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 12:24
+0.693503241014,"[[9258  245    1]
+ [2855  149    0]
+ [ 967   93    8]]",0.709257006014,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 12:48
+0.713464938126,"[[9160  310   34]
+ [2567  379   58]
+ [ 733  188  147]]",0.653079161122,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 13:13
+0.714348850913,"[[9182  271   51]
+ [2585  342   77]
+ [ 697  197  174]]",0.646302639173,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 13:32

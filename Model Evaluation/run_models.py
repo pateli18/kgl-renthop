@@ -93,8 +93,8 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 		log_time_start = time.time()
 		log_model = LogisticRegression()
 		log_model_performance, log_model_score = evaluate_model('log', log_model, LOG_PARAMETERS, X_train, X_test, y_train, y_test)
-		df_model_performance.append(log_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
-		df_chosen_models.append(log_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		df_model_performance = df_model_performance.append(log_model_performance, ignore_index = True)
+		df_chosen_models = df_chosen_models.append(log_model_score, ignore_index = True)
 		log_time_end = time.time()
 		print("Log Model Complete! Time Elapsed - {0} Seconds".format(log_time_end - log_time_start))
 	if 'rf' in models:
@@ -102,8 +102,8 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 		rf_time_start = time.time()
 		rf_model = RandomForestClassifier()
 		rf_model_performance, rf_model_score = evaluate_model('rf', rf_model, RF_PARAMETERS, X_train, X_test, y_train, y_test)
-		df_model_performance.append(rf_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
-		df_chosen_models.append(rf_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		df_model_performance = df_model_performance.append(rf_model_performance, ignore_index = True)
+		df_chosen_models = df_chosen_models.append(rf_model_score, ignore_index = True)
 		rf_time_end = time.time()
 		print("RF Model Complete! Time Elapsed - {0} Seconds".format(rf_time_end - rf_time_start))
 	if 'xgb' in models:
@@ -111,10 +111,12 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 		xgb_time_start = time.time()
 		xgb_model = XGBClassifier()
 		xgb_model_performance, xgb_model_score = evaluate_model('xgb', xgb_model, XGB_PARAMETERS, X_train, X_test, y_train, y_test)
-		df_model_performance.append(xgb_model_performance, ignore_index = True).to_csv(model_performance_dataset, index = False)
-		df_chosen_models.append(xgb_model_score, ignore_index = True).to_csv(chosen_models_dataset, index = False)
+		df_model_performance = df_model_performance.append(xgb_model_performance, ignore_index = True)
+		df_chosen_models = df_chosen_models.append(xgb_model_score, ignore_index = True)
 		xgb_time_end = time.time()
 		print("XGB Model Complete! Time Elapsed - {0} Seconds".format(xgb_time_end - xgb_time_start))
+	df_model_performance.to_csv(model_performance_dataset, index = False)
+	df_chosen_models.to_csv(chosen_models_dataset, index = False)
 	print("Complete")
 
 dataset = sys.argv[1]
