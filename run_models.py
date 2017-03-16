@@ -73,7 +73,7 @@ def evaluate_model(model_name, model, parameters, X_train, X_test, y_train, y_te
 	model_score = chosen_model_score(model_cv.best_estimator_, model_name, str(model_cv.best_params_), X_test, y_test)
 	return model_performance, model_score
 
-def run_models(dataset, model_performance_dataset, chosen_models_dataset, models = ['log', 'rf', 'xgb']):
+def run_models(dataset, model_performance_dataset, chosen_models_dataset, models):
 	print("Loading data...")	
 	df_full = pd.read_csv(dataset)
 	try:
@@ -120,5 +120,5 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 dataset = sys.argv[1]
 model_performance_dataset = sys.argv[2]
 chosen_models_dataset = sys.argv[3]
-models = ['log', 'rf', 'xgb'] if sys.argv[4] is None else sys.argv[4] 
+models = sys.argv[4] 
 run_models(dataset, model_performance_dataset, chosen_models_dataset, models)
