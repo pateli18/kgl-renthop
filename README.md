@@ -2,6 +2,8 @@
 
 ## Description
 
+**Model Summary** is an ipython notebook which summarizes model performance visually in score charts, confusion matrices, and feature importance plots
+
 ### Data Transformation
 
 **clean_dataset** is a command line program which dedupes the raw data and eliminates price outliers
@@ -21,7 +23,7 @@
 * `cv_folds`: number of folds used in k-fold cross-validation
 * `predictors`: predictors used in the model
 
-*chosen_models.csv* is a dataset that stores the output of models chosen through cross-validation, including:
+*chosen_model.csv* is a dataset that stores the output of models chosen through cross-validation, including:
 * `timestamp`: date / time model was run
 * `model`: model type (log, rf, xgboost)
 * `parameters`: parameters of the model
@@ -29,6 +31,7 @@
 * `accuracy`: accuracy score of the model on the test set
 * `confusion_matrix`: array of the confusion matrix of the model on the test set
 * `predictors`: predictors used in the model
+* `feature_importance`: array of feature importance values
 
 ## Data Transformation
 
@@ -51,8 +54,8 @@ python add_predictor_lengths.py <cleaned_data_filepath.csv> <transformed_data_fi
 
 `<models_list_object>` can be a combination of the following values: `'log'`, `'rf'`, `'xgb'`
 
-Make sure the path to both *model_performance.csv* and *chosen_models.csv* is correct and that the updated versions of these are pushed to github
+Make sure the path to both *model_performance.csv* and *chosen_model.csv* is correct and that the updated versions of these are pushed to github
 
 ```console
-python run_models.py <training_dataset.csv> model_performance.csv chosen_models.csv <models_list_object>
+python run_models.py <training_dataset.csv> model_performance.csv chosen_model.csv <models_list_object>
 ```

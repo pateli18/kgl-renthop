@@ -54,10 +54,11 @@ def chosen_model_score(model, model_name, model_parameters, X_test, y_test):
 	predictions = model.predict(X_test)
 	log_loss_score = log_loss(y_test, probabilities)
 	accuracy = accuracy_score(y_test, predictions)
+	feature_importance = model.feature_importances_ if model_name != 'log' else None
 	cm = confusion_matrix(y_test, predictions, labels = ['low', 'medium', 'high'])
 	values = [{'timestamp': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M'), 'model' : model_name,
 			'parameters' : model_parameters, 'log_loss' : log_loss_score, 'accuracy' : accuracy, 'confusion_matrix' : cm,
-			'predictors' : list(X_test.columns)}]
+			'predictors' : list(X_test.columns), 'feature_importances' : feature_importance}]
 	print("Log-Loss: {0:.4f}".format(log_loss_score))
 	print("Accuracy: {0:.4f}".format(accuracy))
 	return pd.DataFrame(values)
