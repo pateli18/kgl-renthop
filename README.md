@@ -54,8 +54,10 @@ python add_predictor_lengths.py <cleaned_data_filepath.csv> <transformed_data_fi
 
 `<models_list_object>` can be a combination of the following values: `'log'`, `'rf'`, `'xgb'`
 
+`<tf_idf_list_object>` is a 2-item list with the first item a `boolean` term indicating whether or not a tf-idf transformation should take place and the second item is an `int` that corresponds to the `max_features` component of the `CountVectorizer` function
+
 Make sure the path to both *model_performance.csv* and *chosen_model.csv* is correct and that the updated versions of these are pushed to github
 
 ```console
-python run_models.py <training_dataset.csv> model_performance.csv chosen_model.csv <models_list_object>
+python run_models.py <training_dataset.csv> model_performance.csv chosen_model.csv <models_list_object> <tf_idf_list_object>
 ```
