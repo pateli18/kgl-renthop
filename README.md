@@ -10,6 +10,12 @@
 
 **add_predictor_lengths** is a command line program which adds the length of the description, the number of photos, and the number of features of a property
 
+
+### Feature Engineering
+
+**sentiment.py** is a command line program that gets the sentiment of each description using the 
+
+
 ### Model Evaluation
 
 **run_models** is a command line program which runs cross-validated log, random forest, and xgboost models and stores their performance
