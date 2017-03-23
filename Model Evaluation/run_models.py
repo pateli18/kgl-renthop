@@ -11,14 +11,17 @@ from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from ast import literal_eval
 import datetime
 import time
 from xgboost import XGBClassifier
+from nltk.stem.snowball import SnowballStemmer
 
 TEST_SIZE = .3
 RANDOM_SEED = 42
+MAX_FEAT = 1000
 
 LOG_PARAMETERS = {'solver' : ['newton-cg'], 'multi_class' : ['multinomial'], 
 'class_weight' : ['balanced', None], 'C' : [10**c for c in range(-3, 4)]}
@@ -45,16 +48,30 @@ def split_data(dataset):
 		print("{0}: {1:.4f} | {2:.4f}".format(key, y_train_split[key], y_test_split[key]))
 	return X_train, X_test, y_train, y_test
 
-def tf_idf(X_train, X_test, max_feat):
+def stem_data(dataset):
+	print("Stemming Description Text...")
+	def stemming(sentence):
+		new_sentence = []
+		stemmer = SnowballStemmer('english')
+		for word in sentence:
+			stem = stemmer.stem(word)
+			new_sentence.append(stem)
+		stem_sentence = " ".join(new_sentence)
+		return stem_sentence
+	dataset['stem_description'] = dataset['description'].str.lower().str.split(' ').apply(stemming)
+	print("Complete")
+	return dataset
+
+def tf_idf(X_train, X_test):
 	print("Transforming Description Text...")
 	# split dataframes into description and non-desciption sets
-	X_train_no_desc = X_train.drop('description', axis = 1).reset_index()
-	X_train_desc = X_train['description']
-	X_test_no_desc = X_test.drop('description', axis = 1).reset_index()
-	X_test_desc = X_test['description']
+	X_train_no_desc = X_train.drop('stem_description', axis = 1).reset_index()
+	X_train_desc = X_train['stem_description']
+	X_test_no_desc = X_test.drop('stem_description', axis = 1).reset_index()
+	X_test_desc = X_test['stem_description']
 	# create count vector
 	stp_wrds = ENGLISH_STOP_WORDS.union(['york'])
-	count_vector = CountVectorizer(max_df = .99, min_df = .01, stop_words = stp_wrds, max_features = max_feat)
+	count_vector = CountVectorizer(max_df = .2, stop_words = stp_wrds, max_features = MAX_FEAT,ngram_range = (1,3))
 	X_train_counts = count_vector.fit_transform(X_train_desc)
 	# get column names excluding those words that are just numbers
 	feature_names = count_vector.get_feature_names()
@@ -110,9 +127,9 @@ def evaluate_model(model_name, model, parameters, X_train, X_test, y_train, y_te
 	model_score = chosen_model_score(model_cv.best_estimator_, model_name, str(model_cv.best_params_), X_test, y_test)
 	return model_performance, model_score
 
-def run_models(dataset, model_performance_dataset, chosen_models_dataset, models, tf_idf_parameters):
+def run_models(dataset, model_performance_dataset, chosen_models_dataset, models):#,tf_idf_parameters):
 	print("Loading data...")	
-	df_full = pd.read_csv(dataset)
+	df_full = pd.read_json(dataset)
 	try:
 		df_model_performance = pd.read_csv(model_performance_dataset)
 	except IOError:
@@ -123,10 +140,11 @@ def run_models(dataset, model_performance_dataset, chosen_models_dataset, models
 	except IOError:
 		df_chosen_models = pd.DataFrame(columns = ['timestamp', 'model', 'parameters', 'log_loss', 'accuracy',
 			'confusion_matrix', 'predictors'])
+	df_full = stem_data(df_full)
 	print("Splitting data...")
 	X_train, X_test, y_train, y_test = split_data(df_full)
-	if tf_idf_parameters[0]:
-		X_train, X_test = tf_idf(X_train, X_test, tf_idf_parameters[1])
+	# if tf_idf_parameters[0]:
+	X_train, X_test = tf_idf(X_train, X_test)
 	if 'log' in models:
 		print("Cross-Validating Log Model...")
 		log_time_start = time.time()
@@ -162,5 +180,5 @@ dataset = sys.argv[1]
 model_performance_dataset = sys.argv[2]
 chosen_models_dataset = sys.argv[3]
 models = sys.argv[4]
-tf_idf_parameters = literal_eval(sys.argv[5])
-run_models(dataset, model_performance_dataset, chosen_models_dataset, models, tf_idf_parameters)
+#tf_idf_parameters = literal_eval(sys.argv[5])
+run_models(dataset, model_performance_dataset, chosen_models_dataset, models)#, tf_idf_parameters)
