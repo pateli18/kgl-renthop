@@ -1,26 +1,26 @@
 accuracy,confusion_matrix,feature_importances,log_loss,model,parameters,predictors,timestamp
-0.697628167354,"[[9405   98    1]
+0.697628167,"[[9405   98    1]
  [2943   60    1]
- [1010   52    6]]",,0.723702616474,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",2017-03-16 18:17
-0.707793164408,"[[9367  104   33]
+ [1010   52    6]]",,0.723702616,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",3/16/2017 18:17
+0.707793164,"[[9367  104   33]
  [2853  109   42]
- [ 873   62  133]]",[ 0.07521602  0.14711349  0.77767049],0.699523280856,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",2017-03-16 18:30
-0.70970830878,"[[9387   67   50]
+ [ 873   62  133]]",[ 0.07521602  0.14711349  0.77767049],0.699523281,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'price']",3/16/2017 18:30
+0.709708309,"[[9387   67   50]
  [2855   91   58]
- [ 849   62  157]]",[ 0.11066017  0.21640541  0.67293441],0.693430676414,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'price']",2017-03-16 18:41
-0.693503241014,"[[9258  245    1]
+ [ 849   62  157]]",[ 0.11066017  0.21640541  0.67293441],0.693430676,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'price']",3/16/2017 18:41
+0.693503241,"[[9258  245    1]
  [2855  149    0]
- [ 967   93    8]]",,0.709257006014,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 18:59
-0.713464938126,"[[9160  310   34]
+ [ 967   93    8]]",,0.709257006,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",3/16/2017 18:59
+0.713464938,"[[9160  310   34]
  [2567  379   58]
- [ 733  188  147]]",[ 0.37278375  0.10014773  0.02617405  0.18985133  0.12693393  0.18410923],0.653079161122,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 19:25
-0.714348850913,"[[9182  271   51]
+ [ 733  188  147]]",[ 0.37278375  0.10014773  0.02617405  0.18985133  0.12693393  0.18410923],0.653079161,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",3/16/2017 19:25
+0.714348851,"[[9182  271   51]
  [2585  342   77]
- [ 697  197  174]]",[ 0.26825026  0.08910684  0.03218163  0.24509628  0.13520485  0.23016016],0.646302639173,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",2017-03-16 19:45
-0.698806717737,"[[9473   31    0]
+ [ 697  197  174]]",[ 0.26825026  0.08910684  0.03218163  0.24509628  0.13520485  0.23016016],0.646302639,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['price', 'bedrooms', 'bathrooms', 'description_length', 'num_photos', 'num_features']",3/16/2017 19:45
+0.698806718,"[[9473   31    0]
  [2990   14    0]
- [1053   15    0]]",,0.74247753952,log,"{'multi_class': 'multinomial', 'C': 0.001, 'solver': 'newton-cg', 'class_weight': None}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",2017-03-18 00:20
-0.717516205068,"[[9359  128   17]
+ [1053   15    0]]",,0.74247754,log,"{'multi_class': 'multinomial', 'C': 0.001, 'solver': 'newton-cg', 'class_weight': None}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",3/18/2017 0:20
+0.717516205,"[[9359  128   17]
  [2698  245   61]
  [ 772  159  137]]","[ 0.01852316  0.00563652  0.0344117   0.067735    0.06765971  0.06782149
   0.03098991  0.03527474  0.03289185  0.03563194  0.03446983  0.01876204
@@ -40,8 +40,8 @@ accuracy,confusion_matrix,feature_importances,log_loss,model,parameters,predicto
   0.00795873  0.00464708  0.00668843  0.00732311  0.00311476  0.00234978
   0.00252641  0.00517274  0.00417385  0.00244052  0.00914384  0.0034473
   0.00533199  0.002842    0.00423111  0.00299943  0.00306199  0.00263285
-  0.02125851  0.00244327  0.00574989]",0.63923074483,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",2017-03-18 01:38
-0.721788450206,"[[9324  148   32]
+  0.02125851  0.00244327  0.00574989]",0.639230745,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",3/18/2017 1:38
+0.72178845,"[[9324  148   32]
  [2649  283   72]
  [ 697  179  192]]","[ 0.02052351  0.00359046  0.08823257  0.17697474  0.          0.
   0.03321751  0.04644429  0.06645819  0.0580959   0.0793375   0.01948112
@@ -61,32 +61,45 @@ accuracy,confusion_matrix,feature_importances,log_loss,model,parameters,predicto
   0.00509613  0.00618485  0.00118138  0.00152884  0.00208478  0.00261756
   0.00053278  0.00196896  0.00722724  0.          0.00917304  0.00551309
   0.00280287  0.00157517  0.0019458   0.00173732  0.00115821  0.00048645
-  0.01331943  0.00692611  0.00389159]",0.632577492302,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.01, 'max_depth': 5}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",2017-03-18 06:11
-0.699469652328,"[[9481   23    0]
+  0.01331943  0.00692611  0.00389159]",0.632577492,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.01, 'max_depth': 5}","['indexpred', 'bathrooms', 'bedroomspred', 'price', 'price_sq', 'price_log', 'description_length', 'num_photos', 'num_features', 'latitude', 'longitude', 'indexword', u'access', u'amazing', u'amenities', u'apartment', u'apartments', u'appliances', u'area', u'available', u'bath', u'bathroom', u'beautiful', u'bedroom', u'bedroomsword', u'bond', u'br', u'broker', u'building', u'ceilings', u'center', u'central', u'city', u'close', u'closet', u'closets', u'com', u'concierge', u'contact', u'deck', u'dishwasher', u'doorman', u'dryer', u'east', u'elevator', u'email', u'equal', u'estate', u'features', u'fee', u'fitness', u'floor', u'floors', u'free', u'granite', u'great', u'hardwood', u'high', u'home', u'hour', u'housing', u'including', u'information', u'just', u'kagglemanager', u'kitchen', u'large', u'laundry', u'li', u'light', u'living', u'located', u'location', u'luxury', u'manhattan', u'marble', u'modern', u'new', u'opportunity', u'park', u'private', u'real', u'renovated', u'renthop', u'restaurants', u'room', u'schedule', u'shopping', u'size', u'sized', u'space', u'spacious', u'stainless', u'steel', u'steps', u'storage', u'street', u'studio', u'subway', u'supports', u'text', u'today', u'unit', u'view', u'viewing', u'views', u'walk', u'washer', u'website_redacted', u'west', u'windows']",3/18/2017 6:11
+0.699469652,"[[9481   23    0]
  [2989   15    0]
- [1050   18    0]]",,0.742899337599,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",2017-03-18 10:34
-0.729080730701,"[[9149  325   30]
+ [1050   18    0]]",,0.742899338,log,"{'multi_class': 'multinomial', 'C': 1000, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",3/18/2017 10:34
+0.729080731,"[[9149  325   30]
  [2361  563   80]
  [ 550  332  186]]","[ 0.00859429  0.08101622  0.09202757  0.09116546  0.09817133  0.08711055
   0.0619758   0.08972856  0.09857778  0.10009477  0.01568015  0.04626407
-  0.02666528  0.10292816]",0.611304976159,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",2017-03-18 11:17
-0.741234531526,"[[8984  473   47]
+  0.02666528  0.10292816]",0.611304976,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",3/18/2017 11:17
+0.741234532,"[[8984  473   47]
  [2044  830  130]
  [ 393  426  249]]","[ 0.01846409  0.06399637  0.15385848  0.13181381  0.16949017  0.11174648
   0.05806435  0.11316267  0.          0.          0.01675395  0.05990808
-  0.03345447  0.06928709]",0.590041271509,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",2017-03-18 11:58
-0.700058927519,"[[9504    0    0]
+  0.03345447  0.06928709]",0.590041272,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'price_sq', 'price_log', 'month', 'day', 'dayofweek', 'hour']",3/18/2017 11:58
+0.700058928,"[[9504    0    0]
  [3004    0    0]
- [1068    0    0]]",,0.782286856753,log,"{'multi_class': 'multinomial', 'C': 0.001, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",2017-03-18 18:38
-0.7222304066,"[[9243  243   18]
+ [1068    0    0]]",,0.782286857,log,"{'multi_class': 'multinomial', 'C': 0.001, 'solver': 'newton-cg', 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",3/18/2017 18:38
+0.722230407,"[[9243  243   18]
  [2513  423   68]
  [ 655  274  139]]","[ 0.01197485  0.05043829  0.0571009   0.05729902  0.18370562  0.07065262
   0.05479966  0.07004086  0.03612118  0.09532756  0.02313056  0.0335129
   0.00633997  0.0326547   0.00593283  0.03319828  0.03644493  0.03816237
-  0.03349495  0.0362408   0.03342716]",0.622837151127,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",2017-03-18 19:27
-0.739466705952,"[[8964  499   41]
+  0.03349495  0.0362408   0.03342716]",0.622837151,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 10, 'random_state': 42, 'class_weight': None}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",3/18/2017 19:27
+0.739466706,"[[8964  499   41]
  [2049  826  129]
  [ 400  419  249]]","[ 0.01461622  0.05385906  0.08586033  0.0759032   0.13455446  0.08575384
   0.04347594  0.0912915   0.04765581  0.05449802  0.0251857   0.03634088
   0.00708181  0.03093634  0.00234286  0.0279279   0.03189478  0.0360214
-  0.03833764  0.03527595  0.04118634]",0.592170293515,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",2017-03-18 20:29
+  0.03833764  0.03527595  0.04118634]",0.592170294,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['bathrooms', 'bedrooms', 'latitude', 'longitude', 'price', 'description_length', 'num_photos', 'num_features', 'day', 'hour', 'avg_yelp_review', 'incomeBetween100to200', 'blockFips', 'incomeLessThan25', 'incomeBelowPoverty', 'medianIncome', 'incomeGreater200', 'educationBachelorOrGreater', 'incomeBetween50to100', 'educationHighSchoolGraduate', 'incomeBetween25to50']",3/18/2017 20:29
+0.697554508,"[[9204  296    4]
+ [2747  246   11]
+ [ 903  145   20]]",,0.697047418,log,"{'multi_class': 'multinomial', 'C': 0.01, 'solver': 'newton-cg', 'class_weight': None}","['price', 'latitude', 'longitude', 'num_features', 'description_length', 'hour', 'bedrooms', 'day', 'num_photos', 'sentiment_score', 'Negative', 'Neutral', 'Positive']",3/23/2017 22:59
+0.733500295,"[[9043  416   45]
+ [2188  682  134]
+ [ 490  345  233]]","[ 0.16509002  0.11392523  0.11319482  0.10552549  0.11665619  0.08026486
+  0.04340337  0.08742934  0.0714977   0.0889764   0.00351107  0.00526082
+  0.00526467]",0.619818698,rf,"{'max_features': 'auto', 'n_estimators': 500, 'min_samples_leaf': 1, 'random_state': 42, 'class_weight': None}","['price', 'latitude', 'longitude', 'num_features', 'description_length', 'hour', 'bedrooms', 'day', 'num_photos', 'sentiment_score', 'Negative', 'Neutral', 'Positive']",3/24/2017 0:01
+0.738730112,"[[8972  494   38]
+ [2068  810  126]
+ [ 421  400  247]]","[ 0.16467002  0.14362499  0.1319125   0.10669591  0.11495882  0.07228046
+  0.06543481  0.06805541  0.05516633  0.07466039  0.          0.00254038
+  0.        ]",0.593175903,xgb,"{'n_estimators': 500, 'objective': 'multi:softprob', 'learning_rate': 0.05, 'max_depth': 5}","['price', 'latitude', 'longitude', 'num_features', 'description_length', 'hour', 'bedrooms', 'day', 'num_photos', 'sentiment_score', 'Negative', 'Neutral', 'Positive']",3/24/2017 0:26
