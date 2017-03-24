@@ -4,6 +4,7 @@ import json
 import sys
 import requests
 import time
+from ast import literal_eval
 
 def get_response(start_lat, start_lng, end_lat, end_lng, index, total):
 	url = 'https://api.uber.com/v1.2/estimates/price?start_latitude={0}&start_longitude={1}&end_latitude={2}&end_longitude={3}'.format(start_lat, start_lng, end_lat, end_lng)
@@ -34,6 +35,7 @@ def get_data(dataset_filepath, routes_filepath, destination_geocode):
 		df['routes_id'] = df.index
 		df = df[['routes_id','latitude', 'longitude', destination_geocode]]
 		df['routes_status_code'] = df['routes_id'].apply(lambda x: None)
+	df[destination_geocode] = df[destination_geocode].apply(lambda geocode: literal_eval(geocode))
 	ids_pulled = [int(i[0]) for i in df[['routes_id', 'routes_status_code']].values if pd.notnull(i[1])]
 	ids_to_pull = [int(i[0]) for i in df[['routes_id', 'routes_status_code']].values if pd.isnull(i[1])]
 	total = len(ids_to_pull)
