@@ -68,4 +68,5 @@ def get_data(dataset_filepath, routes_filepath, destination_geocode):
 
 dataset_filepath = sys.argv[1]
 routes_filepath = sys.argv[2]
-get_data(dataset_filepath, routes_filepath)
+destination_geocode = sys.argv[3]
+get_data(dataset_filepath, routes_filepath, destination_geocode)
