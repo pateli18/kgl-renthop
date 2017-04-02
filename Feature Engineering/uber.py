@@ -8,7 +8,7 @@ from ast import literal_eval
 
 def get_response(start_lat, start_lng, end_lat, end_lng, index, total):
 	url = 'https://api.uber.com/v1.2/estimates/price?start_latitude={0}&start_longitude={1}&end_latitude={2}&end_longitude={3}'.format(start_lat, start_lng, end_lat, end_lng)
-	api_token ='Rmah_eOq6rBjc-UjQZtszGJX3JAaqhf620WaHYgM'
+	api_token ='rjiZqDxe2lAz6LCgxZVwe5g-P31O2azv0oeEevmm'
 	authorization_token = 'Token ' + api_token 
 	try:
 		response = requests.get(url, headers={'Authorization': authorization_token,
@@ -68,5 +68,12 @@ def get_data(dataset_filepath, routes_filepath, destination_geocode):
 
 dataset_filepath = sys.argv[1]
 routes_filepath = sys.argv[2]
+<<<<<<< HEAD
 destination_geocode = sys.argv[3]
 get_data(dataset_filepath, routes_filepath, destination_geocode)
+||||||| merged common ancestors
+get_data(dataset_filepath, routes_filepath)
+=======
+destination_geocode = sys.argv[3]
+get_data(dataset_filepath, routes_filepath,destination_geocode)
+>>>>>>> d866f2f5e6844da8e22f8787b444f3e12402168b
